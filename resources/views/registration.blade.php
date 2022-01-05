@@ -22,22 +22,22 @@
 
                             <div class="form-group">
                                 <label for="username" class="text-info">First Name:</label><br>
-                                <input type="text" name="firstname" id="firstname" class="form-control">
+                                <input type="text" value="{{old('firstname')}}" name="firstname" id="firstname" class="form-control">
                                 <span class="text-danger" role="alert"> @error('firstname'){{$message}}@enderror</span>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Last Name:</label><br>
-                                <input type="text" name="lastname" id="lastname" class="form-control">
+                                <input type="text" name="lastname" value="{{old('lastname')}}" id="lastname" class="form-control">
                                 <span class="text-danger" role="alert"> @error('lastname'){{$message}}@enderror</span>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Username:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <input type="text" name="username" id="username"  value="{{old('username')}}" class="form-control">
                                 <span class="text-danger" role="alert"> @error('username'){{$message}}@enderror</span>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Email:</label><br>
-                                <input type="text" name="email" id="email" class="form-control">
+                                <input type="text" name="email" id="email"  value="{{old('email')}}" class="form-control">
                                 <span class=" text-danger" role="alert"> @error('email'){{$message}}@enderror</span>
                             </div>
                             <div class="form-group">

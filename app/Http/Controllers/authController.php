@@ -22,9 +22,9 @@ class authController extends Controller
          $request -> validate([
              'firstname' => 'required',
              'lastname' => 'required',
-             'username' => 'required',
-             'email' => 'required',
-             'password' => 'required',
+             'username' => 'required | unique:user',
+             'email' => 'required|email| unique:user' ,
+             'password' => 'required|min:5|max:10',
          ]);
 
          $user = new User;
@@ -39,10 +39,38 @@ class authController extends Controller
 
          }
          else{
-            return back()->with('fail','You have successfully registered a user');
-         }
+            return back()->with('fail','You have error with your registration');
+        }
 
 
+    }
+
+    public function loginUser(Request $request ){
+        $request->validate([
+            'username'=>'required',
+            'password'=>'required'
+        ]);
+
+        $user = User::where('email', '=', $request->'email')->first();
+        if($user){
+            if(Hash::check($request->'password',$user->'password')){
+                $request->Session()->put('loginId',$user->Id);
+                return redirect('dashbord')
+            }
+            else{
+                return back()->with('fail','Email not found');
+            }
+
+        }
+        else{
+            return back()->with('fail','Email not found');
+        }
+
+
+    }
+
+    public function dashboard(){
+        return 'this is the dashboard';
     }
 
 }

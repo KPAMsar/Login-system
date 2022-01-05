@@ -20,5 +20,5 @@ Route::get('/', function () {
 Route::get('login',[authController::class,'login']);
 Route::get('registration',[authController::class,'registration']);
 Route::post('/registration',[authController::class,'registerUser'])->name('register-user');
-
-        
+Route::post('/login-user',[authController::class,'loginUser'])->name('login-user');
+Route::get('/dashboard',[authController::class,'dashboard']);
